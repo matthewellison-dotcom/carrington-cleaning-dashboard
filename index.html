@@ -8,33 +8,38 @@
 <style>
 :root {
   --red:#DA291C;
-  --black:#111;
+  --black:#101010;
   --gold:#FBE122;
-  --white:#fff;
+  --white:#ffffff;
   --green:#0B7A35;
   --amber:#B87900;
   --danger:#C62828;
+  --soft:#f5f5f5;
+}
+
+* {
+  box-sizing:border-box;
 }
 
 body {
   margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#111 0%,#1c1c1c 45%,#DA291C 120%);
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#101010 0%,#1d1d1d 45%,#b92318 120%);
   color:#111;
   min-height:100vh;
 }
 
 .container {
-  max-width:1000px;
+  max-width:1050px;
   margin:0 auto;
-  padding:26px;
+  padding:24px;
 }
 
 .top-line {
   height:5px;
   background:linear-gradient(90deg,var(--red),var(--gold),var(--red));
   border-radius:999px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .header {
@@ -69,7 +74,19 @@ body {
   color:#ddd;
 }
 
-.status-card,.box,.issues,table,.alert-box,.chart-card {
+.helper {
+  margin-top:10px;
+  font-size:13px;
+  color:#cfcfcf;
+}
+
+.card,
+.status-card,
+.box,
+.issues,
+.chart-card,
+table,
+.alert-box {
   background:var(--white);
   border-radius:16px;
   box-shadow:0 8px 24px rgba(0,0,0,.18);
@@ -77,14 +94,20 @@ body {
 
 .status-card {
   padding:26px;
-  margin-bottom:20px;
+  margin-bottom:18px;
   border-left:8px solid var(--red);
+}
+
+.status {
+  font-size:42px;
+  font-weight:900;
+  margin-top:4px;
 }
 
 .alert-box {
   display:none;
   padding:18px;
-  margin-bottom:20px;
+  margin-bottom:18px;
   font-size:20px;
   font-weight:900;
   color:white;
@@ -99,20 +122,21 @@ body {
   font-weight:bold;
 }
 
-.status {
-  font-size:42px;
-  font-weight:900;
+.subtext {
+  font-size:13px;
+  color:#666;
+  margin-top:4px;
 }
 
-.good { color:var(--green); }
-.okay { color:var(--amber); }
-.poor { color:var(--danger); }
+.good-text { color:var(--green); }
+.okay-text { color:var(--amber); }
+.poor-text { color:var(--danger); }
 
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:16px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .box {
@@ -128,13 +152,34 @@ body {
 
 .issues {
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:18px;
   border-left:6px solid var(--gold);
+}
+
+.card {
+  padding:20px;
+  margin-bottom:18px;
+  border-left:6px solid var(--red);
+}
+
+.tasks-list {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+  margin-top:8px;
+}
+
+.task-pill {
+  padding:10px 12px;
+  background:#f2f2f2;
+  border-radius:999px;
+  font-weight:bold;
+  font-size:14px;
 }
 
 .chart-card {
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .chart-row {
@@ -143,6 +188,7 @@ body {
   gap:12px;
   align-items:center;
   margin:10px 0;
+  font-size:14px;
 }
 
 .bar-bg {
@@ -158,10 +204,16 @@ body {
   width:0%;
 }
 
+.table-wrap {
+  overflow-x:auto;
+  border-radius:16px;
+}
+
 table {
   width:100%;
   border-collapse:collapse;
   overflow:hidden;
+  min-width:650px;
 }
 
 th,td {
@@ -176,6 +228,18 @@ th {
   color:white;
 }
 
+.row-good td {
+  background:rgba(11,122,53,.08);
+}
+
+.row-okay td {
+  background:rgba(184,121,0,.10);
+}
+
+.row-poor td {
+  background:rgba(198,40,40,.10);
+}
+
 .footer {
   font-size:12px;
   color:#eee;
@@ -183,12 +247,61 @@ th {
   text-align:center;
 }
 
-@media(max-width:600px){
-  .container{padding:16px;}
-  .header h1{font-size:24px;}
-  .status{font-size:30px;}
-  .value{font-size:18px;}
-  .chart-row{grid-template-columns:70px 1fr 30px;}
+@media(max-width:700px) {
+  .container {
+    padding:14px;
+  }
+
+  .header {
+    padding:20px;
+  }
+
+  .header h1 {
+    font-size:24px;
+    line-height:1.15;
+  }
+
+  .badge {
+    font-size:10px;
+  }
+
+  .status-card {
+    padding:20px;
+  }
+
+  .status {
+    font-size:30px;
+  }
+
+  .grid {
+    grid-template-columns:1fr;
+  }
+
+  .box,
+  .card,
+  .issues,
+  .chart-card {
+    padding:16px;
+  }
+
+  .value {
+    font-size:19px;
+  }
+
+  .tasks-list {
+    grid-template-columns:1fr;
+  }
+
+  .chart-row {
+    grid-template-columns:75px 1fr 28px;
+    gap:8px;
+    font-size:12px;
+  }
+
+  th,td {
+    padding:9px;
+    font-size:12px;
+  }
 }
 </style>
 </head>
@@ -202,11 +315,12 @@ th {
     <div class="badge">Training Centre Operations</div>
     <h1>Carrington Cleaning Operations Dashboard</h1>
     <p>Live cleaning status from daily checklist submissions</p>
+    <div class="helper">Green = no action needed · Orange = monitor/clean soon · Red = cleaning required now</div>
     <p id="lastUpdated">Last updated: loading...</p>
   </div>
 
   <div class="status-card">
-    <div class="label">Current Cleaning Status</div>
+    <div class="label">Current Site Status</div>
     <div id="mainStatus" class="status">Loading...</div>
   </div>
 
@@ -241,7 +355,7 @@ th {
     </div>
 
     <div class="box">
-      <div class="label">Poor Today</div>
+      <div class="label">Poor Floors Today</div>
       <div id="poorToday" class="value">-</div>
     </div>
 
@@ -252,26 +366,35 @@ th {
   </div>
 
   <div class="issues" id="issuesBox">
-    <div class="label">Latest Issues / Notes</div>
+    <div class="label">Latest Issue Reported</div>
     <div id="issuesText" class="value">Loading...</div>
   </div>
 
+  <div class="card">
+    <div class="label">Last Cleaning Tasks Completed</div>
+    <div class="subtext">Tasks ticked on the most recent checklist submission.</div>
+    <div id="tasksList" class="tasks-list">Loading...</div>
+  </div>
+
   <div class="chart-card">
-    <div class="label">Weekly Performance</div>
+    <div class="label">Checks Completed This Week</div>
+    <div class="subtext">Number of cleaning checks submitted each day.</div>
     <div id="weeklyChart"></div>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Staff</th>
-        <th>Floor</th>
-        <th>Issues</th>
-      </tr>
-    </thead>
-    <tbody id="recentRows"></tbody>
-  </table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Staff</th>
+          <th>Floor</th>
+          <th>Issues</th>
+        </tr>
+      </thead>
+      <tbody id="recentRows"></tbody>
+    </table>
+  </div>
 
   <div class="footer">
     Carrington Cleaning Log · Page refreshes automatically every 30 seconds
@@ -337,6 +460,25 @@ function formatDay(date){
   return date.toLocaleDateString("en-GB",{weekday:"short",day:"2-digit",month:"2-digit"});
 }
 
+function buildTasks(tasksText){
+  const tasksList=document.getElementById("tasksList");
+  tasksList.innerHTML="";
+
+  if(!tasksText){
+    tasksList.textContent="No tasks recorded";
+    return;
+  }
+
+  const tasks=tasksText.split(",").map(t=>t.trim()).filter(Boolean);
+
+  tasks.forEach(task=>{
+    const div=document.createElement("div");
+    div.className="task-pill";
+    div.textContent="✓ " + task;
+    tasksList.appendChild(div);
+  });
+}
+
 function buildWeeklyChart(rows){
   const chart=document.getElementById("weeklyChart");
   chart.innerHTML="";
@@ -350,21 +492,18 @@ function buildWeeklyChart(rows){
     days.push({
       date:d,
       label:formatDay(d),
-      checks:0,
-      poor:0
+      checks:0
     });
   }
 
   rows.forEach(row=>{
     const rowDate=new Date(clean(row[0]));
-    const floor=clean(row[3]).toLowerCase();
 
     days.forEach(day=>{
       if(rowDate.getDate()===day.date.getDate() &&
          rowDate.getMonth()===day.date.getMonth() &&
          rowDate.getFullYear()===day.date.getFullYear()){
         day.checks++;
-        if(floor==="poor") day.poor++;
       }
     });
   });
@@ -403,6 +542,7 @@ fetch(csvUrl)
 
   const date=clean(latest[0]);
   const name=clean(latest[1]);
+  const tasks=clean(latest[2]);
   const floor=clean(latest[3]);
   const finalCheck=clean(latest[4]);
   const issues=clean(latest[5]) || "No issues reported";
@@ -413,23 +553,26 @@ fetch(csvUrl)
   const issuesBox=document.getElementById("issuesBox");
 
   if(floor.toLowerCase()==="poor"){
-    statusEl.textContent="🚨 Immediate Action Required";
-    statusEl.className="status poor";
-    floorEl.className="value poor";
+    statusEl.textContent="❌ Cleaning Required Now";
+    statusEl.className="status poor-text";
+    floorEl.className="value poor-text";
+
     alertBox.style.display="block";
     alertBox.style.background="#C62828";
-    alertBox.textContent="🚨 URGENT: Floor condition is POOR";
+    alertBox.textContent="❌ Action needed: floor condition has been marked POOR.";
   } else if(floor.toLowerCase()==="okay"){
-    statusEl.textContent="⚠ Attention Required";
-    statusEl.className="status okay";
-    floorEl.className="value okay";
+    statusEl.textContent="⚠ Cleaning Needed Soon";
+    statusEl.className="status okay-text";
+    floorEl.className="value okay-text";
+
     alertBox.style.display="block";
     alertBox.style.background="#B87900";
-    alertBox.textContent="⚠ Attention: Floor condition is OKAY";
+    alertBox.textContent="⚠ Monitor area: floor condition has been marked OKAY.";
   } else {
-    statusEl.textContent="✔ Standards Met";
-    statusEl.className="status good";
-    floorEl.className="value good";
+    statusEl.textContent="✔ Site Clean & Ready";
+    statusEl.className="status good-text";
+    floorEl.className="value good-text";
+
     alertBox.style.display="none";
   }
 
@@ -444,6 +587,8 @@ fetch(csvUrl)
   floorEl.textContent=floor || "Not recorded";
   document.getElementById("finalCheck").textContent=finalCheck || "Not recorded";
   document.getElementById("issuesText").textContent=issues;
+
+  buildTasks(tasks);
 
   let checksToday=0;
   let poorToday=0;
@@ -472,7 +617,14 @@ fetch(csvUrl)
   tbody.innerHTML="";
 
   recent.forEach(row=>{
+    const rowFloor=clean(row[3]).toLowerCase();
+    let rowClass="row-good";
+
+    if(rowFloor==="poor") rowClass="row-poor";
+    if(rowFloor==="okay") rowClass="row-okay";
+
     const tr=document.createElement("tr");
+    tr.className=rowClass;
     tr.innerHTML=`
       <td>${clean(row[0])}</td>
       <td>${clean(row[1])}</td>
@@ -484,7 +636,7 @@ fetch(csvUrl)
 })
 .catch(error=>{
   document.getElementById("mainStatus").textContent="Could not load data";
-  document.getElementById("mainStatus").className="status poor";
+  document.getElementById("mainStatus").className="status poor-text";
   console.error(error);
 });
 
