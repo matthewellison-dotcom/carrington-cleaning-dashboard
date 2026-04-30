@@ -6,167 +6,167 @@
 <title>Carrington Cleaning Dashboard</title>
 
 <style>
-  :root {
-    --red: #DA291C;
-    --black: #111111;
-    --gold: #FBE122;
-    --white: #ffffff;
-    --grey: #f3f3f3;
-    --text: #151515;
-    --green: #0B7A35;
-    --amber: #B87900;
-    --danger: #C62828;
-  }
+:root {
+  --red: #DA291C;
+  --black: #111111;
+  --gold: #FBE122;
+  --white: #ffffff;
+  --green: #0B7A35;
+  --amber: #B87900;
+  --danger: #C62828;
+}
 
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #111 0%, #1c1c1c 45%, #DA291C 120%);
-    color: var(--text);
-    min-height: 100vh;
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #111 0%, #1c1c1c 45%, #DA291C 120%);
+  color: #111;
+  min-height: 100vh;
+}
 
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 26px;
-  }
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 26px;
+}
 
-  .header {
-    background: var(--black);
-    color: white;
-    padding: 26px;
-    border-radius: 18px;
-    border-top: 6px solid var(--red);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-    margin-bottom: 22px;
-  }
+.top-line {
+  height: 5px;
+  background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
 
-  .header h1 {
-    margin: 0;
-    font-size: 32px;
-    letter-spacing: -0.5px;
-  }
+.header {
+  background: var(--black);
+  color: white;
+  padding: 26px;
+  border-radius: 18px;
+  border-top: 6px solid var(--red);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  margin-bottom: 22px;
+}
 
-  .header p {
-    margin: 8px 0 0;
-    color: #ddd;
-    font-size: 15px;
-  }
+.badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  background: var(--red);
+  color: white;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
-  .badge {
-    display: inline-block;
-    margin-bottom: 12px;
-    padding: 6px 10px;
-    background: var(--red);
-    color: white;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
 
-  .status-card, .box, .issues, table {
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  }
+.header p {
+  margin: 8px 0 0;
+  color: #ddd;
+}
 
-  .status-card {
-    padding: 26px;
-    margin-bottom: 20px;
-    border-left: 8px solid var(--red);
-  }
+.status-card,
+.box,
+.issues,
+table,
+.alert-box {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
 
-  .label {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-    font-weight: bold;
-  }
+.status-card {
+  padding: 26px;
+  margin-bottom: 20px;
+  border-left: 8px solid var(--red);
+}
 
-  .status {
-    font-size: 42px;
-    font-weight: 900;
-    margin-top: 4px;
-  }
+.alert-box {
+  display: none;
+  padding: 18px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+}
 
-  .good { color: var(--green); }
-  .okay { color: var(--amber); }
-  .poor { color: var(--danger); }
+.label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-weight: bold;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-  }
+.status {
+  font-size: 42px;
+  font-weight: 900;
+}
 
-  .box {
-    padding: 20px;
-    border-bottom: 4px solid var(--red);
-  }
+.good { color: var(--green); }
+.okay { color: var(--amber); }
+.poor { color: var(--danger); }
 
-  .value {
-    font-size: 22px;
-    font-weight: 800;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
 
-  .issues {
-    padding: 20px;
-    margin-bottom: 20px;
-    border-left: 6px solid var(--gold);
-  }
+.box {
+  padding: 20px;
+  border-bottom: 4px solid var(--red);
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-  }
+.value {
+  font-size: 22px;
+  font-weight: 800;
+  word-break: break-word;
+}
 
-  th, td {
-    text-align: left;
-    padding: 14px;
-    border-bottom: 1px solid #eee;
-    font-size: 14px;
-  }
+.issues {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 6px solid var(--gold);
+}
 
-  th {
-    background: var(--black);
-    color: white;
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
 
-  th:first-child {
-    border-left: 6px solid var(--red);
-  }
+th, td {
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
 
-  tr:hover td {
-    background: #fafafa;
-  }
+th {
+  background: var(--black);
+  color: white;
+}
 
-  .footer {
-    font-size: 12px;
-    color: #eee;
-    margin-top: 18px;
-    text-align: center;
-  }
+.footer {
+  font-size: 12px;
+  color: #eee;
+  margin-top: 18px;
+  text-align: center;
+}
 
-  .top-line {
-    height: 5px;
-    background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
-    border-radius: 999px;
-    margin-bottom: 20px;
-  }
-
-  @media (max-width: 600px) {
-    .container { padding: 16px; }
-    .header h1 { font-size: 24px; }
-    .status { font-size: 30px; }
-    .value { font-size: 18px; }
-  }
+@media (max-width: 600px) {
+  .container { padding: 16px; }
+  .header h1 { font-size: 24px; }
+  .status { font-size: 30px; }
+  .value { font-size: 18px; }
+}
 </style>
 </head>
 
@@ -177,14 +177,17 @@
 
   <div class="header">
     <div class="badge">Training Centre Operations</div>
-    <h1>Carrington Cleaning Dashboard</h1>
+    <h1>Carrington Cleaning Operations Dashboard</h1>
     <p>Live cleaning status from daily checklist submissions</p>
+    <p id="lastUpdated">Last updated: loading...</p>
   </div>
 
   <div class="status-card">
     <div class="label">Current Cleaning Status</div>
     <div id="mainStatus" class="status">Loading...</div>
   </div>
+
+  <div id="alertBox" class="alert-box"></div>
 
   <div class="grid">
     <div class="box">
@@ -208,6 +211,23 @@
     </div>
   </div>
 
+  <div class="grid">
+    <div class="box">
+      <div class="label">Checks Today</div>
+      <div id="checksToday" class="value">-</div>
+    </div>
+
+    <div class="box">
+      <div class="label">Poor Today</div>
+      <div id="poorToday" class="value">-</div>
+    </div>
+
+    <div class="box">
+      <div class="label">Issues Logged Today</div>
+      <div id="issuesToday" class="value">-</div>
+    </div>
+  </div>
+
   <div class="issues">
     <div class="label">Latest Issues / Notes</div>
     <div id="issuesText" class="value">Loading...</div>
@@ -226,7 +246,7 @@
   </table>
 
   <div class="footer">
-    Carrington Cleaning Log · Refresh page for latest updates
+    Carrington Cleaning Log · Page refreshes automatically every 30 seconds
   </div>
 
 </div>
@@ -276,9 +296,23 @@ function clean(value) {
   return value && value.trim() ? value.trim() : "";
 }
 
+function sameDay(dateText) {
+  const d = new Date(dateText);
+  const now = new Date();
+
+  return (
+    d.getDate() === now.getDate() &&
+    d.getMonth() === now.getMonth() &&
+    d.getFullYear() === now.getFullYear()
+  );
+}
+
 fetch(csvUrl)
   .then(response => response.text())
   .then(csv => {
+    document.getElementById("lastUpdated").textContent =
+      "Last updated: " + new Date().toLocaleTimeString();
+
     const rows = parseCSV(csv).slice(1).filter(row => row.some(cell => clean(cell)));
 
     if (!rows.length) {
@@ -296,19 +330,30 @@ fetch(csvUrl)
 
     const statusEl = document.getElementById("mainStatus");
     const floorEl = document.getElementById("floorCondition");
+    const alertBox = document.getElementById("alertBox");
 
     if (floor.toLowerCase() === "poor") {
       statusEl.textContent = "⚠ Needs Attention";
       statusEl.className = "status poor";
       floorEl.className = "value poor";
+
+      alertBox.style.display = "block";
+      alertBox.style.background = "#C62828";
+      alertBox.textContent = "⚠ URGENT: Floor condition is POOR";
     } else if (floor.toLowerCase() === "okay") {
       statusEl.textContent = "✔ Acceptable";
       statusEl.className = "status okay";
       floorEl.className = "value okay";
+
+      alertBox.style.display = "block";
+      alertBox.style.background = "#B87900";
+      alertBox.textContent = "⚠ Attention: Floor condition is OKAY";
     } else {
       statusEl.textContent = "✔ All Good";
       statusEl.className = "status good";
       floorEl.className = "value good";
+
+      alertBox.style.display = "none";
     }
 
     document.getElementById("latestDate").textContent = date || "Not recorded";
@@ -316,6 +361,26 @@ fetch(csvUrl)
     floorEl.textContent = floor || "Not recorded";
     document.getElementById("finalCheck").textContent = finalCheck || "Not recorded";
     document.getElementById("issuesText").textContent = issues;
+
+    let checksToday = 0;
+    let poorToday = 0;
+    let issuesToday = 0;
+
+    rows.forEach(row => {
+      const rowDate = clean(row[0]);
+      const rowFloor = clean(row[3]).toLowerCase();
+      const rowIssues = clean(row[5]);
+
+      if (sameDay(rowDate)) {
+        checksToday++;
+        if (rowFloor === "poor") poorToday++;
+        if (rowIssues) issuesToday++;
+      }
+    });
+
+    document.getElementById("checksToday").textContent = checksToday;
+    document.getElementById("poorToday").textContent = poorToday;
+    document.getElementById("issuesToday").textContent = issuesToday;
 
     const recent = rows.slice(-5).reverse();
     const tbody = document.getElementById("recentRows");
@@ -337,6 +402,10 @@ fetch(csvUrl)
     document.getElementById("mainStatus").className = "status poor";
     console.error(error);
   });
+
+setInterval(() => {
+  location.reload();
+}, 30000);
 </script>
 
 </body>
