@@ -61,15 +61,8 @@ body {
   text-transform:uppercase;
 }
 
-.header h1 {
-  margin:0;
-  font-size:32px;
-}
-
-.header p {
-  margin:8px 0 0;
-  color:#ddd;
-}
+.header h1 { margin:0; font-size:32px; }
+.header p { margin:8px 0 0; color:#ddd; }
 
 .helper {
   margin-top:10px;
@@ -410,11 +403,23 @@ function formatDay(date){
 }
 
 function normaliseTasks(tasksText){
-  return tasksText
+  if(!tasksText) return [];
+
+  const raw = tasksText.trim();
+
+  if(
+    raw === "✓" ||
+    raw === "✔" ||
+    raw.toLowerCase() === "true" ||
+    raw.replace(/✓|✔|true|,/gi, "").trim() === ""
+  ){
+    return ["Checklist completed"];
+  }
+
+  return raw
     .split(/,\s*/)
     .map(t => t.trim())
-    .filter(Boolean)
-    .filter(t => t !== "✓" && t !== "✔" && t.toLowerCase() !== "true");
+    .filter(Boolean);
 }
 
 function buildTasks(tasksText){
@@ -424,7 +429,7 @@ function buildTasks(tasksText){
   const tasks=normaliseTasks(tasksText);
 
   if(!tasks.length){
-    tasksList.textContent="No tasks recorded";
+    tasksList.innerHTML = '<div class="task-pill">✓ Checklist completed</div>';
     return;
   }
 
